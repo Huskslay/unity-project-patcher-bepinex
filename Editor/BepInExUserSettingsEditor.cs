@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Nomnom.BepInEx.Editor {
         
         private void OnEnable() {
             FindPlugins();
+            BepInExPreloader.InitPaths();
         }
 
         private void FindPlugins() {
@@ -41,6 +43,7 @@ namespace Nomnom.BepInEx.Editor {
 
             if (GUILayout.Button("Open BepInEx Folder")) {
                 var settings = BepInExPreloader.GetBepInExUserSettings();
+                BepInExPreloader.InitPaths();
                 EditorUtility.RevealInFinder(settings.RootFolder);
             }
 

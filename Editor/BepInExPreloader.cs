@@ -30,6 +30,8 @@ namespace Nomnom.BepInEx.Editor {
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void OnLoad() {
+            InitPaths();
+            
             var obj = new GameObject(typeof(BepInExPreloader).FullName);
             var lifetime = obj.AddComponent<BepInExSceneLifetime>();
             lifetime.Init(OnDestroy);
@@ -366,6 +368,30 @@ namespace Nomnom.BepInEx.Editor {
                         yield return (type, type.GetCustomAttributes<InjectPatchAttribute>().First());
                     }
                 }
+            }
+        }
+
+        internal static void InitPaths() {
+            try {
+                var settings = GetBepInExUserSettings();
+                if (!Directory.Exists(settings.RootFolder)) {
+                    Directory.CreateDirectory(settings.RootFolder);
+                }
+            
+                var coreFolder = settings.CoreFolder;
+                if (!Directory.Exists(coreFolder)) {
+                    Directory.CreateDirectory(coreFolder);
+                }
+            
+                if (!Directory.Exists(settings.PluginsPath)) {
+                    Directory.CreateDirectory(settings.PluginsPath);
+                }
+            
+                if (!File.Exists(settings.LocalExePath)) {
+                    using (var file = File.Create(settings.LocalExePath)) { }
+                }
+            } catch (Exception e) {
+                Debug.LogError($"Encountered an error while initializing BepInExPreloader paths:\n{e}");
             }
         }
     }
