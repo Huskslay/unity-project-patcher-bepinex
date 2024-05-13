@@ -17,12 +17,15 @@ namespace Nomnom.BepInEx.Editor.Patches {
                 .Where(x => typeof(BaseUnityPlugin).IsAssignableFrom(x))
                 .Where(x => allSettings.Any(y => y.PluginFullTypeNames.Contains(x.FullName)))
                 .Select(x => AccessTools.Method(x, "Awake"))
-                .Where(x => x != null);
+                .Where(x => x != null)
+                .Append(AccessTools.Method(typeof(PluginBlockerPatch), nameof(PluginBlockerPatch.Awake)));
         }
 
         public static bool Prefix(object __instance) {
             Debug.Log($"Blocking plugin: {__instance.GetType().FullName}");
             return false;
         }
+        
+        private static void Awake() { }
     }
 }
