@@ -88,7 +88,7 @@ Install with the manifest.json:
 2. Insert the following as an entry:
 
 ```json
-"com.nomnom.unity-project-patcher": "https://github.com/nomnomab/unity-project-patcher-bepinex.git"
+"com.nomnom.unity-project-patcher-bepinex": "https://github.com/nomnomab/unity-project-patcher-bepinex.git"
 ```
 
 - If you are using a specific version, you can append it to the end of the git URL, such as `#v1.2.3`
