@@ -153,3 +153,7 @@ This lets you block plugins from running their `Awake` functions. Useful for plu
 imported into the project, such as Steam usage.
 
 Each name has to be in the format of `Namespace.TypeName`.
+
+<br/>
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B6R2Z9U)
