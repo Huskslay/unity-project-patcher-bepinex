@@ -64,6 +64,8 @@ This project is bundled with the following packages:
 <!-- Prerequisites -->
 ### Prerequisites
 
+- Minimum Unity 2020.3 afaik
+  - Still needs more testing with how to handle older Unity versions
 - [Git](https://git-scm.com/download/win)
 - [Unity Project Patcher](https://github.com/nomnomab/unity-project-patcher)
 

@@ -32,7 +32,7 @@ namespace Nomnom.BepInEx.Editor {
             Debug.Log("If you want to use BepInEx, please enable it in the BepInExUserSettings in the project. (click here to go to it)");
         }
 #else
-        private static List<Assembly> _assemblies = new();
+        private static List<Assembly> _assemblies = new List<Assembly>();
 
         private static void Print(object message) {
             // Debug.Log(message);

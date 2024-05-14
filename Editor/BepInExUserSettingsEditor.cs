@@ -29,13 +29,13 @@ namespace Nomnom.BepInEx.Editor {
             if (!enabled) {
                 EditorUtility.DisplayProgressBar("Disabling BepInEx", "Disabling BepInEx", 0.5f);
                 EditorApplication.delayCall += () => {
-                    PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.Standalone).Replace("ENABLE_BEPINEX", ""));
+                    PatcherUtility.SetScriptingDefineSymbols(PatcherUtility.GetScriptingDefineSymbols().Replace("ENABLE_BEPINEX", ""));
                     EditorUtility.ClearProgressBar();
                 };
             } else {
                 EditorUtility.DisplayProgressBar("Enabling BepInEx", "Enabling BepInEx", 0.5f);
                 EditorApplication.delayCall += () => {
-                    PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.Standalone) + ";ENABLE_BEPINEX");
+                    PatcherUtility.SetScriptingDefineSymbols(PatcherUtility.GetScriptingDefineSymbols() + ";ENABLE_BEPINEX");
                     EditorUtility.ClearProgressBar();
                 };
             }
