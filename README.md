@@ -107,6 +107,8 @@ If a wrapper requires this, yet you don't want to use plugins, then do the follo
 ### BepinexUserSettings
 > [!NOTE]  
 > Can be made via `Create > Unity Project Patcher > BepInEx User Settings`
+>
+> One will be made for you upon entering the game if one doesn't exist.
 
 ![](Assets~/BepinexUserSettings.png)
 
