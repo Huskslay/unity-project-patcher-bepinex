@@ -121,7 +121,7 @@ Otherwise:
 > [!NOTE]  
 > Can be made via `Create > Unity Project Patcher > BepInEx User Settings`
 >
-> One will be made for you upon entering the game if one doesn't exist.
+> One will be made for you in the project root, upon entering the game, if one doesn't exist.
 
 ![](Assets~/BepinexUserSettings.png)
 
