@@ -93,12 +93,25 @@ Install with the manifest.json:
 
 - If you are using a specific version, you can append it to the end of the git URL, such as `#v1.2.3`
 
-#### Disabling this package
+#### Enabling this package
 
-If a wrapper requires this, yet you don't want to use plugins, then do the following:
+You can press the `Enable BepInEx` button in the tool window
+
+Otherwise:
 
 1. `Edit > Project Settings > Player > Other Settings > Scripting Define Symbols`
-2. Add a new entry for `NO_BEPINEX`
+2. Add a new entry for `ENABLE_BEPINEX`
+3. Press "Apply"
+4. Wait for scripts to recompile
+
+#### Disabling this package
+
+You can press the `Disable BepInEx` button in the tool window
+
+Otherwise:
+
+1. `Edit > Project Settings > Player > Other Settings > Scripting Define Symbols`
+2. Remove the entry for `ENABLE_BEPINEX` if it exists
 3. Press "Apply"
 4. Wait for scripts to recompile
 

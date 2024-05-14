@@ -1,6 +1,6 @@
 {
   "name": "com.nomnom.unity-project-patcher-bepinex",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "Unity Project Patcher BepInEx",
   "description": "A BepInEx handler for a Unity Project Patcher project",
   "unity": "2022.3",

@@ -15,7 +15,7 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [
-        "!NO_BEPINEX"
+        "ENABLE_BEPINEX"
     ],
     "versionDefines": [],
     "noEngineReferences": false
