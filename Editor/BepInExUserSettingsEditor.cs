@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Nomnom.UnityProjectPatcher.Editor;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace Nomnom.BepInEx.Editor {
@@ -17,11 +18,31 @@ namespace Nomnom.BepInEx.Editor {
         [NonSerialized] private string[] _internalPlugins;
         [NonSerialized] private string[] _externalPlugins;
         
+#if ENABLE_BEPINEX
         private void OnEnable() {
             FindPlugins();
             BepInExPreloader.InitPaths();
         }
+#endif
 
+        private void ChangeFlag(bool enabled) {
+            if (!enabled) {
+                EditorUtility.DisplayProgressBar("Disabling BepInEx", "Disabling BepInEx", 0.5f);
+                EditorApplication.delayCall += () => {
+                    PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.Standalone).Replace("ENABLE_BEPINEX", ""));
+                    EditorUtility.ClearProgressBar();
+                };
+            } else {
+                EditorUtility.DisplayProgressBar("Enabling BepInEx", "Enabling BepInEx", 0.5f);
+                EditorApplication.delayCall += () => {
+                    PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.Standalone) + ";ENABLE_BEPINEX");
+                    EditorUtility.ClearProgressBar();
+                };
+            }
+        }
+
+        
+#if ENABLE_BEPINEX
         private void FindPlugins() {
             _isLoading = true;
             EditorApplication.delayCall += () => {
@@ -30,12 +51,28 @@ namespace Nomnom.BepInEx.Editor {
                 _isLoading = false;
             };
         }
+#endif
 
         public override void OnInspectorGUI() {
+            GUI.enabled = !EditorApplication.isCompiling;
+            
+            using (var change = new EditorGUI.ChangeCheckScope()) {
+#if ENABLE_BEPINEX
+                var toggle = EditorGUILayout.Toggle("Enabled", true);
+#else
+                var toggle = EditorGUILayout.Toggle("Enabled", false);
+#endif   
+                
+                if (change.changed) {
+                    ChangeFlag(toggle);
+                }
+            }
+            
             base.OnInspectorGUI();
             
             EditorGUILayout.Space();
             
+#if ENABLE_BEPINEX
             GUI.enabled = !_isLoading;
             if (GUILayout.Button("Reload")) {
                 FindPlugins();
@@ -54,6 +91,7 @@ namespace Nomnom.BepInEx.Editor {
             EditorGUILayout.Space();
             ShowExternalPlugins();
             EditorGUILayout.Space();
+#endif
         }
 
         private void ShowInternalPlugins() {

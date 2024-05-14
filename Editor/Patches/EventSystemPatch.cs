@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if ENABLE_BEPINEX
+using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,3 +26,4 @@ namespace Nomnom.BepInEx.Editor.Patches {
         }
     }
 }
+#endif

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using UnityEngine;
+
+#if ENABLE_BEPINEX
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,9 +15,9 @@ using Nomnom.BepInEx.Editor.Patches;
 using Nomnom.UnityProjectPatcher;
 using Nomnom.UnityProjectPatcher.Editor;
 using UnityEditor;
-using UnityEngine;
 using Logger = BepInEx.Logging.Logger;
 using PatcherUtility = Nomnom.UnityProjectPatcher.PatcherUtility;
+#endif
 
 namespace Nomnom.BepInEx.Editor {
     /// <summary>
@@ -22,6 +25,13 @@ namespace Nomnom.BepInEx.Editor {
     /// If there is an easier way to do this, please tell me!
     /// </summary>
     internal static class BepInExPreloader {
+#if !ENABLE_BEPINEX
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void OnLoad() {
+            Debug.Log("BepInEx is not enabled. Skipping BepInExPreloader.");
+            Debug.Log("If you want to use BepInEx, please enable it in the BepInExUserSettings in the project. (click here to go to it)");
+        }
+#else
         private static List<Assembly> _assemblies = new();
 
         private static void Print(object message) {
@@ -44,9 +54,7 @@ namespace Nomnom.BepInEx.Editor {
             ResetNGORpcTables.Reset();
             
             var settings = GetBepInExUserSettings();
-            if (!EditorApplication.isPlayingOrWillChangePlaymode || !settings.Enabled) {
-                return;
-            }
+            if (!EditorApplication.isPlayingOrWillChangePlaymode) return;
             
             Init(settings);
 
@@ -394,5 +402,6 @@ namespace Nomnom.BepInEx.Editor {
                 Debug.LogError($"Encountered an error while initializing BepInExPreloader paths:\n{e}");
             }
         }
+#endif
     }
 }

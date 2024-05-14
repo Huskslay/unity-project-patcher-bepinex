@@ -1,4 +1,8 @@
-﻿# 1.0.3
+﻿# 1.0.4
+
+- Added usages of `ENABLE_BEPINEX` throughout the code to conditionally include code blocks
+
+# 1.0.3
 
 - BepInEx assemblies now require `ENABLE_BEPINEX` to be enabled, rather than defaulting to enabled
 

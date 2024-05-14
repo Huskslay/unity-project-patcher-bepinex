@@ -1,4 +1,5 @@
-﻿using BepInEx.Bootstrap;
+﻿#if ENABLE_BEPINEX
+using BepInEx.Bootstrap;
 using HarmonyLib;
 
 namespace Nomnom.BepInEx.Editor.Patches {
@@ -12,3 +13,4 @@ namespace Nomnom.BepInEx.Editor.Patches {
         }
     }
 }
+#endif

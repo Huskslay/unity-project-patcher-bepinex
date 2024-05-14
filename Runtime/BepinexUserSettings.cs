@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace Nomnom {
     [CreateAssetMenu(fileName = "UPPatcherBepInExUserSettings", menuName = "Unity Project Patcher/BepInEx User Settings")]
     public sealed class BepinexUserSettings: ScriptableObject {
-        public bool Enabled => _enabled;
+#if UNITY_EDITOR
         public bool LoadProjectPlugins => _loadProjectPlugins;
         
         public string RootFolder
@@ -59,8 +59,8 @@ namespace Nomnom {
                 }
             }
         }
-
-        [SerializeField] private bool _enabled = false;
+#endif
+        
         [SerializeField] private bool _loadProjectPlugins = true;
         [SerializeField] private BepinexLocation _bepinexLocation;
         [SerializeField] private string _bepinexCustomLocation;

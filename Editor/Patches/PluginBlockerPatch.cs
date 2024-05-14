@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if ENABLE_BEPINEX
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -29,3 +30,4 @@ namespace Nomnom.BepInEx.Editor.Patches {
         private static void Awake() { }
     }
 }
+#endif

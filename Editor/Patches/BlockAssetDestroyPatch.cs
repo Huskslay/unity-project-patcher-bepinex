@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿#if ENABLE_BEPINEX
+using HarmonyLib;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,3 +36,4 @@ namespace Nomnom.BepInEx.Editor.Patches {
         }
     }
 }
+#endif

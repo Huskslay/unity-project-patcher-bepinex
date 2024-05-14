@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿#if ENABLE_BEPINEX
+using System.Reflection;
 using BepInEx.Bootstrap;
 using HarmonyLib;
 using UnityEditor;
@@ -30,3 +31,4 @@ namespace Nomnom.BepInEx.Editor.Patches {
         }
     }
 }
+#endif

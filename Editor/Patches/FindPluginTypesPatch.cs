@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if ENABLE_BEPINEX
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using BepInEx;
@@ -58,3 +59,4 @@ namespace Nomnom.BepInEx.Editor.Patches {
         }
     }
 }
+#endif
