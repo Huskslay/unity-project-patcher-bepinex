@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using UnityEditor;
 using Object = UnityEngine.Object;
 
 namespace Nomnom.BepInEx.Editor {
@@ -43,6 +44,14 @@ namespace Nomnom.BepInEx.Editor {
             
             fieldInfo.SetValue(owner, originalList);
             return true;
+        }
+        
+        [MenuItem("Tools/Unity Project Patcher/Configs/" + nameof(BepinexUserSettings))]
+        private static void OpenBepinexUserSettings() {
+            var config = BepInExPreloader.GetBepInExUserSettings();
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = config;
+            EditorGUIUtility.PingObject(config);
         }
     }
 }

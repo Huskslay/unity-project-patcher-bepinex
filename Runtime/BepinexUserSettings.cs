@@ -61,6 +61,7 @@ namespace Nomnom {
         }
 #endif
         
+        [Header("Project plugins are located in \"[Game Name]/Mods/\"")]
         [SerializeField] private bool _loadProjectPlugins = true;
         [SerializeField] private BepinexLocation _bepinexLocation;
         [SerializeField] private string _bepinexCustomLocation;

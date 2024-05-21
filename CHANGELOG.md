@@ -1,4 +1,9 @@
-﻿# 1.0.5
+﻿# 1.0.6
+
+- Clarified plugin location in project
+- Added config to `Tools > Unity Project Patcher > Configs`
+
+# 1.0.5
 
 - Tweaked parts of code for older Unity versions
 - Conditionally excluded MonoMod and Harmony from before 2020.3
