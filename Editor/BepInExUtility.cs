@@ -46,6 +46,7 @@ namespace Nomnom.BepInEx.Editor {
             return true;
         }
         
+#if ENABLE_BEPINEX
         [MenuItem("Tools/Unity Project Patcher/Configs/" + nameof(BepinexUserSettings))]
         private static void OpenBepinexUserSettings() {
             var config = BepInExPreloader.GetBepInExUserSettings();
@@ -53,5 +54,6 @@ namespace Nomnom.BepInEx.Editor {
             Selection.activeObject = config;
             EditorGUIUtility.PingObject(config);
         }
+#endif
     }
 }

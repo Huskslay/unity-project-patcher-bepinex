@@ -1,4 +1,8 @@
-﻿# 1.0.6
+﻿# 1.0.7
+
+- Excludes UPP function call properly in `BepInExUtility.cs`
+
+# 1.0.6
 
 - Clarified plugin location in project
 - Added config to `Tools > Unity Project Patcher > Configs`
